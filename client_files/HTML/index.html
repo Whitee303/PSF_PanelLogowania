@@ -1,0 +1,164 @@
+<!-- Skrót l = Sekcja logowania,
+Skrót r = Skrót rejestracji -->
+
+
+
+<!DOCTYPE html>
+<html lang="en" and dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div id="Logging_Section">
+        <form action="index.html">
+            <input class="inputs" type="text" id="login_l" placeholder="Wpisz nazwę użytkownika..">
+            <input class="inputs" type="password" id="password_l" placeholder="Wpisz swoje hasło..">
+            <button type="button" class="btn" id='Zaloguj' onclick="setPlayerLogged()">Zaloguj</button>
+        </form>
+    </div>
+
+    <div id="Sections">
+        <button type=" button" class="btn" id='rejestracja' onclick="show_registrationPanel()">Zarejestruj się</button>
+        <button type=" button" class="btn" id='Logowanie' onclick=" show_LoggingPanel()">Zaloguj się</button>
+    </div>
+
+    <div id="Registers">
+        <center>
+            <input class="inputs" type="text" id="login_r" placeholder="Wpisz nazwę użytkownika..">
+            <input class="inputs" type="password" id="password_r" placeholder="Wpisz swoje hasło..">
+            <button type=" button" class="btn" id='rejestruj' onclick="getCharset()">Zarejestruj się</button>
+        </center>
+    </div>
+
+    <button type="button" class="btn" id="back" onclick="back_functions()">Wróć</button>
+    <div class=" shadow2" data-src="need.mp3"></div>
+    <div class=" shadows">
+        <div class="snowflakes" aria-hidden="true">
+            <div class="snowflake">
+                ❅
+            </div>
+            <div class="snowflake">
+                ❅
+            </div>
+            <div class="snowflake">
+                ❆
+            </div>
+            <div class="snowflake">
+                ❄
+            </div>
+            <div class="snowflake">
+                ❅
+            </div>
+            <div class="snowflake">
+                ❆
+            </div>
+            <div class="snowflake">
+                ❄
+            </div>
+            <div class="snowflake">
+                ❅
+            </div>
+            <div class="snowflake">
+                ❆
+            </div>
+            <div class="snowflake">
+                ❄
+            </div>
+        </div>
+
+
+
+        <script type="text/javascript">
+            if ('alt' in window) {
+
+                const Loggin_Sec = document.getElementById("Logging_Section");
+                const Register_Sec = document.getElementById("Registers");
+                const back = document.getElementById("back");
+                const sections = document.getElementById("Sections")
+                Loggin_Sec.style.display = "none";
+                back.style.display = "none";
+                Register_Sec.style.display = "none";
+
+                const zaloguj = document.getElementById("Logowanie");
+
+                let logging;
+                function show_LoggingPanel() {
+                    logging = true
+                    sections.style.display = "none";
+                    Loggin_Sec.style.display = "";
+                    back.style.display = "";
+                };
+
+                let registration;
+                function show_registrationPanel() {
+                    registration = true;
+                    sections.style.display = "none";
+                    Register_Sec.style.display = "";
+                    back.style.display = "";
+                };
+
+                function back_functions() {
+                    if (registration) {
+                        Register_Sec.style.display = "none";
+                        sections.style.display = "";
+                        back.style.display = "none";
+
+                    };
+                    if (logging) {
+                        Loggin_Sec.style.display = "none";
+                        sections.style.display = "";
+                        back.style.display = "none";
+                    };
+                    console.log("Register_Sec.style.display");
+                };
+
+
+
+                //Logowanie
+                const input = document.getElementById("login_r");
+                const password = document.getElementById("password_r");
+
+                function aha() {
+                    Loggin_Sec.remove()
+                }
+
+                function getCharset(login, x) {
+                    if (password.value.length < 4) {
+                        console.error("Standard error: Length must be greater than four")
+                        return;
+                    } else {
+                        login = input.value;
+                        x = password.value;
+                        console.log(`Password count:${password.value.length}`);
+                        alt.emit('someEvent', login, x)
+                    }
+                }
+
+                //Rejestracja
+
+
+                const login_l = document.getElementById("login_l");
+                const password_l = document.getElementById("password_l");
+                function setPlayerLogged(PlayerLogin, PlayerPassword) {
+                    if (password_l.value.length < 4) {
+                        console.error("Standard error: Length must be greater than four")
+                        return;
+                    } else {
+                        PlayerLogin = login_l.value;
+                        PlayerPassword = password_l.value;
+                        console.log(`Password count:${password_l.value.length}`);
+                        alt.emit('Login:Event', PlayerLogin, PlayerPassword)
+                    }
+                }
+            }
+
+        </script>
+
+
+
+</body>
+
+</html>
